@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digimart24 International – www.digimart24global.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6b;
+      --accent: #f4a100;
+      --accent2: #00c2a8;
+      --light: #f5f7fc;
+      --white: #ffffff;
+      --text: #1e2a3a;
+      --muted: #6b7a90;
+      --border: #dce3ef;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, nav, .logo { font-family: 'Syne', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .logo { color: var(--white); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    nav ul a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: var(--navy);
+      padding: 0.5rem 1.3rem; border-radius: 6px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #ffb830; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #0d2347 60%, #0a3a4a 100%);
+      display: flex; align-items: center;
+      padding: 7rem 5% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,194,168,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: 20%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(244,161,0,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content { max-width: 680px; position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(244,161,0,0.15); border: 1px solid rgba(244,161,0,0.3);
+      color: var(--accent); padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--white); line-height: 1.15;
+      font-weight: 800; margin-bottom: 1.2rem;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero p {
+      color: rgba(255,255,255,0.7); font-size: 1.1rem;
+      line-height: 1.7; margin-bottom: 2rem; max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: var(--navy);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.2s; font-family: 'Syne', sans-serif;
+    }
+    .btn-primary:hover { background: #ffb830; transform: translateY(-2px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.08); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.14); }
+
+    /* STATS TICKER */
+    .stats-bar {
+      background: var(--accent); padding: 0.9rem 5%;
+      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 0.7rem; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+    .stat-label { font-size: 0.82rem; font-weight: 600; color: rgba(10,22,40,0.7); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* MARQUEE */
+    .marquee-wrap { background: var(--navy); padding: 0.7rem 0; overflow: hidden; }
+    .marquee { display: flex; gap: 3rem; animation: scroll 25s linear infinite; white-space: nowrap; }
+    .marquee span { color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+    .marquee span.dot { color: var(--accent); }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
+    section { padding: 5rem 5%; }
+    .section-tag {
+      display: inline-block; background: rgba(0,194,168,0.1);
+      color: var(--accent2); padding: 0.3rem 0.9rem; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); margin-bottom: 0.7rem; }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 520px; }
+
+    /* SERVICES */
+    #services { background: var(--light); }
+    .services-header { text-align: center; margin-bottom: 3rem; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: 12px;
+      padding: 2rem; border: 1px solid var(--border);
+      transition: all 0.25s; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.1); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    #how { background: var(--white); }
+    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .how-step {
+      text-align: center; padding: 2rem 1.5rem;
+      background: var(--light); border-radius: 12px;
+      position: relative;
+    }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #ff8c00);
+      color: var(--navy); font-family: 'Syne', sans-serif;
+      font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .how-step h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .how-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* WHY US */
+    #why { background: var(--navy); }
+    #why .section-tag { background: rgba(244,161,0,0.15); color: var(--accent); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.6); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+    .why-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.09); }
+    .why-check {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(0,194,168,0.2); color: var(--accent2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .why-card h4 { color: var(--white); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .why-card p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; }
+
+    /* CONTACT */
+    #contact { background: var(--light); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+    .contact-info h2 { font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 0.7rem; }
+    .contact-info p { color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+    .info-item { display: flex; gap: 0.8rem; margin-bottom: 1.2rem; align-items: flex-start; }
+    .info-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: var(--white); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .info-item strong { display: block; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.1rem; }
+    .info-item span { font-size: 0.93rem; color: var(--text); font-weight: 500; }
+
+    /* FORM */
+    .contact-form {
+      background: var(--white); border-radius: 16px;
+      padding: 2.5rem; border: 1px solid var(--border);
+      box-shadow: 0 4px 30px rgba(10,22,40,0.07);
+    }
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--text); margin-bottom: 0.4rem; letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.93rem;
+      color: var(--text); background: var(--light);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(0,194,168,0.12);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .submit-btn {
+      width: 100%; padding: 0.95rem;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white); border: none; border-radius: 8px;
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,22,40,0.25); }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* SUCCESS MESSAGE */
+    .success-msg {
+      display: none; text-align: center; padding: 2rem;
+      background: rgba(0,194,168,0.08); border: 1px solid rgba(0,194,168,0.3);
+      border-radius: 10px; margin-top: 1rem;
+    }
+    .success-msg .checkmark { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .success-msg h4 { color: var(--accent2); font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .success-msg p { color: var(--muted); font-size: 0.9rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.5);
+      text-align: center; padding: 1.8rem 5%;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-bar { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Digimart<span>24</span> International</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">🌍 Global Import · Export · E-Commerce</div>
+    <h1>Your Gateway to <em>Global Trade</em> &amp; Digital Markets</h1>
+    <p>Digimart24 International connects businesses across borders — from sourcing and importing products to selling them worldwide through modern e-commerce channels.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start Trading Today</a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Countries Served</span></div>
+  <div class="stat-item"><span class="stat-num">10K+</span><span class="stat-label">Products Listed</span></div>
+  <div class="stat-item"><span class="stat-num">GST</span><span class="stat-label">Registered Entity</span></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Import &amp; Export</span><span class="dot">✦</span>
+    <span>E-Commerce Solutions</span><span class="dot">✦</span>
+    <span>Global Sourcing</span><span class="dot">✦</span>
+    <span>B2B &amp; B2C</span><span class="dot">✦</span>
+    <span>GST Registered</span><span class="dot">✦</span>
+    <span>Secure Payments</span><span class="dot">✦</span>
+    <span>Logistics Support</span><span class="dot">✦</span>
+    <span>International Shipping</span><span class="dot">✦</span>
+    <span>Import &amp; Export</span><span class="dot">✦</span>
+    <span>E-Commerce Solutions</span><span class="dot">✦</span>
+    <span>Global Sourcing</span><span class="dot">✦</span>
+    <span>B2B &amp; B2C</span><span class="dot">✦</span>
+    <span>GST Registered</span><span class="dot">✦</span>
+    <span>Secure Payments</span><span class="dot">✦</span>
+    <span>Logistics Support</span><span class="dot">✦</span>
+    <span>International Shipping</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">End-to-End Trade &amp; Commerce Services</h2>
+    <p class="section-sub">From product sourcing to last-mile delivery, we handle every step of your import, export, and e-commerce journey.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Product Import &amp; Export</h3>
+      <p>We source, procure, and ship goods across international borders with full documentation, customs clearance, and compliance support.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛒</div>
+      <h3>E-Commerce Store Management</h3>
+      <p>List, manage, and grow your products on leading marketplaces like Amazon, Flipkart, Meesho, and your own branded online store.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚚</div>
+      <h3>Logistics &amp; Shipping</h3>
+      <p>Partnered with trusted courier and freight networks to ensure fast, safe, and trackable deliveries — domestic and international.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <h3>B2B Wholesale Sourcing</h3>
+      <p>Connect with verified manufacturers and wholesalers for bulk procurement at competitive prices with quality guarantees.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Business Consulting</h3>
+      <p>Expert guidance on GST compliance, export documentation, trade finance, and market entry strategies for new and growing businesses.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔒</div>
+      <h3>Secure Payments &amp; Invoicing</h3>
+      <p>Multi-currency invoicing, GST-compliant billing, and secure payment gateways for smooth domestic and international transactions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div style="text-align:center; margin-bottom:1rem;">
+    <span class="section-tag">Simple Process</span>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub" style="margin:0 auto;">Getting started with Digimart24 International is fast and straightforward.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-num">01</div>
+      <h3>Tell Us Your Needs</h3>
+      <p>Share your product requirements, target markets, or business goals with our team.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">02</div>
+      <h3>We Source &amp; Plan</h3>
+      <p>We identify suppliers, plan logistics, and prepare all documentation needed for trade.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">03</div>
+      <h3>List &amp; Sell Online</h3>
+      <p>Your products go live on e-commerce platforms, reaching thousands of buyers globally.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">04</div>
+      <h3>Deliver &amp; Scale</h3>
+      <p>We manage fulfillment, returns, and customer support so you can grow with confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <span class="section-tag">Why Digimart24</span>
+  <h2 class="section-title">Built for Modern Global Commerce</h2>
+  <p class="section-sub">We combine the trust of a registered Indian business with the reach of global digital commerce.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>GST Registered</h4><p>Fully compliant with Indian GST regulations for transparent, legal trade.</p></div>
+    </div>
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>Global Network</h4><p>Established supplier and buyer relationships across 50+ countries.</p></div>
+    </div>
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>End-to-End Support</h4><p>From sourcing to delivery — one partner for your entire trade journey.</p></div>
+    </div>
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>Digital-First Approach</h4><p>Modern e-commerce tools and platforms to maximise your online sales.</p></div>
+    </div>
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>Competitive Pricing</h4><p>Bulk procurement advantages passed directly to our clients and partners.</p></div>
+    </div>
+    <div class="why-card">
+      <div class="why-check">✓</div>
+      <div><h4>Dedicated Account Manager</h4><p>A single point of contact who knows your business and goals inside out.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <span class="section-tag">Get In Touch</span>
+      <h2>Ready to Trade Globally?</h2>
+      <p>Reach out to discuss your requirements and let's build something great together.</p>
+      <div class="info-item">
+        <div class="info-icon">🌐</div>
+        <div><strong>Website</strong><span>www.digimart24global.com</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div><strong>Location</strong><span>India (Serving Globally)</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📧</div>
+        <div><strong>Email</strong><span>info@digimart24global.com</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div><strong>Phone</strong><span>+91 XXXXX XXXXX</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">⏰</div>
+        <div><strong>Business Hours</strong><span>Mon–Sat, 9:00 AM – 6:00 PM IST</span></div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send Us an Enquiry</h3>
+      <form id="enquiryForm" action="https://formspree.io/f/mreodndl" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In *</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select Service</option>
+              <option>Import &amp; Export</option>
+              <option>E-Commerce Store Management</option>
+              <option>Logistics &amp; Shipping</option>
+              <option>B2B Wholesale Sourcing</option>
+              <option>Business Consulting</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message *</label>
+          <textarea id="message" name="message" placeholder="Tell us about your requirements..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Enquiry →</button>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <div class="checkmark">✅</div>
+        <h4>Enquiry Sent Successfully!</h4>
+        <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="https://www.digimart24global.com">Digimart24 International</a> · <a href="https://www.digimart24global.com">www.digimart24global.com</a> · All rights reserved. GST Registered Business, India.</p>
+</footer>
+
+<script>
+  const form = document.getElementById('enquiryForm');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        btn.textContent = 'Send Enquiry →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    } catch (err) {
+      btn.textContent = 'Send Enquiry →';
+      btn.disabled = false;
+      alert('Network error. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>
